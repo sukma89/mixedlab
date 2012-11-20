@@ -1,0 +1,21 @@
+#!/bin/bash
+
+PS3='Choose your favorite vegetable: ' #sets the prompt string.
+
+echo 
+
+select vegetable in "beans" "carrots" "potatoes" "onions" "rutabagas"
+do
+	if [[ -n $vegetable ]]; then
+	echo
+	echo "Your favorite veggie is $vegetable."
+	echo "Yuck!"
+	echo 
+	break #without the break will loop forever.
+	else 
+		echo 'invalid.'
+	fi
+done
+
+exit 0
+

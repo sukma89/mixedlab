@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Post data to other domain</title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="jquery.js"></script>
+    </head>
+    <body>
+
+        <form name="testForm" id="testForm" action="http://www.dev:9900/post.php" method="post">
+            <input type="text" id="userName" name="name" />
+            <input type="password" id="userPassword" name="password" />
+            <input type="submit" value="Login" />
+        </form>
+
+        <div id="data">Loading...</div>
+
+        <script type="text/javascript">
+            var form = $('#testForm');
+            var url = form.attr('action');
+            
+            form.submit(function() {
+                $.post(url, {
+                        "name": $("#userName").val(),
+                        "password": $("#userPassword").val()
+                }, function(data) {
+                        $('#data').html(data.name + ' / ' + data.email);
+                }, 'json');
+                return false;
+            });
+        </script>
+    </body>
+</html>

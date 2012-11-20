@@ -1,0 +1,1 @@
+./configure --enable-proxy --enable-proxy-balancer --enable-proxy-connect --enable-proxy-ftp --enable-proxy-http --enable-rewrite --enable-so --enable-ssl --enable-vhost-alias

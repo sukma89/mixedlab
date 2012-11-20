@@ -1,0 +1,3 @@
+sed  "s/\('\|\"\)eZ Publish.*\('\|\"\)/\1Fwso.cn\2/ig" test.php > 4.o
+
+sed -n  "6s/\('\|\"\)eZ Publish.*\('\|\"\)/\1Fwso.cn\2/igp" test.php

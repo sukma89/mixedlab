@@ -1,0 +1,49 @@
+#!/bin/bash
+#
+#echo Hello, world!
+#echo {a..z}
+
+(( 0 && 1 ))
+echo $?
+let "num = (( 0 && 1 ))"
+echo $num
+let "num = (( 0 && 1 ))"
+echo $?
+
+echo '========'
+
+(( 200 || 11 ))
+echo $?
+let "num = (( 200 || 11 ))"
+echo $num
+let "num = (( 200 || 11 ))"
+echo $?
+
+echo '========'
+
+(( 200 | 11 ))
+echo $?
+let "num = (( 200 | 11 ))"
+echo $num
+let "num = (( 200 | 11 ))"
+echo $?
+
+echo '=========#=============='
+
+PHPCMD="/usr/local/php/bin/php -d display_errors=off"
+
+if $PHPCMD hello2.php > /dev/null 2>&1 
+then
+	echo 'Run successfully.'
+else
+	echo 'Error occured'
+fi
+
+if $PHPCMD hello3.php > /dev/null 2>&1 
+then
+	echo 'Run successfully.'
+else
+	echo 'Error occured'
+fi
+
+

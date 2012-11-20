@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Scrollable</title>
+
+<link type="text/css" rel="stylesheet" href="css/jquery.scrollable.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.scrollable.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#scrollable").scrollable().css({"color":"#F00"});
+});
+</script>
+</head>
+<body>
+<h1>Scrollable</h1>
+
+<div id="scrollable" class="scrollable">
+	
+	<a href="JavaScript:void(0);" class="prevPage pageNav">Previous Page</a>
+	
+	<div class="scrollContent">
+		
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+			<li>11</li>
+			<li>12</li>
+			<li>13</li>
+			<li>14</li>
+			<li>15</li>
+			<li>16</li>
+			<li>17</li>
+			<li>18</li>
+			<li>19</li>
+			<li>20</li>
+		</ul>
+		<div style="clear:both;"></div>
+	</div>
+	
+	<a href="JavaScript:void(0);" class="nextPage pageNav">Next Page</a>
+	<div style="clear:both;"></div>
+	<div class="scrollFooter">Page <span class="pageCount"></span></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IE Select InnerHTML problem</title>
+<head>
+
+<body>
+
+<form action="JavaScript:void(0);">
+	<select id="days" name="days">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3" selected="selected">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select>
+	
+	<input type="button" id="update" value="Update List" />
+</form>
+
+
+<script type="text/javascript">
+
+var daysNode = document.getElementById('days');
+
+function updateOptions () {
+
+	while ( daysNode.firstChild ) {
+		daysNode.removeChild( daysNode.firstChild );
+	}
+
+	for (var i = 1; i < 10; i++) {
+		var options = document.createElement('option');
+		options.setAttribute('value', i);
+		options.appendChild(document.createTextNode(i));
+		daysNode.appendChild(options);
+	}
+}
+
+//following statement does not works on IE.
+//daysNode.innerHTML = '<option value="x">x</option>';
+
+var button = document.getElementById('update');
+
+if (button.addEventListener) {
+	button.addEventListener('click', updateOptions, false);
+} else if (button.attachEvent) {
+	button.attachEvent('onclick', updateOptions);
+}
+
+</script>
+</body>
+</html>

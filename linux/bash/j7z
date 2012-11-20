@@ -1,0 +1,30 @@
+#!/bin/bash
+EXEBASE="/usr/local/bin/7za"
+EXE="$EXEBASE a -t7z -p "
+
+for file in `ls`
+do 
+	if [[ -d "$file" && ! -e "$file.7z" ]]; then
+
+		STAT=true
+		EXC=0
+
+		while $STAT || [[ $EXC > 0 ]]
+		do
+			STAT=false
+			echo "$EXE $file.7z $file"
+			$EXE "$file.7z" $file
+			EXC=$?
+		done
+	fi
+done
+
+for file in `ls *.7z`
+do
+	echo "Testing $file"
+	#$EXEBASE t "$file"	
+done
+
+exit 0
+
+

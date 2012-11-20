@@ -1,0 +1,11 @@
+#!/bin/bash
+PHP=/usr/local/phpdev/bin/php
+
+if [ ! -e "$1" ]
+then
+	echo "$1 does not exits."
+	exit
+fi
+
+$PHP -d html_errors=off -q $1 "$@"
+

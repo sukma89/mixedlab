@@ -1,0 +1,8 @@
+#!/usr/local/bin/php
+<?php
+
+echo "PHP Version[" . phpversion() . "]\nStart ... \nPassword:";
+
+fscanf(STDIN, "%s\n", $str);
+
+echo '> ' . $str . "\n";

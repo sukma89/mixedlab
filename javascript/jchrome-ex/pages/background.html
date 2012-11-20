@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript">
+//<![CDATA[
+
+var urls = {
+	"77": "https://mail.google.com/mail",
+	"78": "http://www.google.com/notebook",
+	"67": "http://code.google.com/",
+	"68": "http://www.google.com/dictionary?langpair=en|zh-CN",
+	"82": "http://www.google.com/reader/"	
+};
+
+chrome.extension.onRequest.addListener(
+  function(request, sender, sendResponse) {
+    console.log("[JChromeEX#background]" + sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+    
+    if (request.code && parseInt(request.code) > 0 && urls[request.code]) {
+
+    	chrome.tabs.create({url:urls[request.code]});
+		
+        sendResponse({status: "OK"});
+        
+    } else {
+        
+      sendResponse({});
+      
+    }
+});
+      
+//]]>
+</script>
+</head>
+<body>
+
+</body>
+</html>

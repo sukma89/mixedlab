@@ -1,0 +1,2 @@
+./configure --enable-fpm --with-openssl --with-zlib --enable-calendar --with-curl --with-curlwrappers --enable-ftp --with-gd --enable-mbstring --with-mysql=mysqlnd --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --enable-pcntl --enable-sockets --enable-zip --enable-soap --with-fpm-user=www --with-fpm-group=www --with-mcrypt --prefix=/usr/local/php --with-jpeg-dir=/usr/lib --with-png-dir=/usr/lib
+

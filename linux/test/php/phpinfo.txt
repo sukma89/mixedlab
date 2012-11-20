@@ -1,0 +1,469 @@
+phpinfo()
+PHP Version => 5.3.3
+
+System => Linux localhost.localdomain 2.6.18-128.el5 #1 SMP Wed Jan 21 10:44:23 EST 2009 i686
+Build Date => Sep  1 2010 14:58:52
+Configure Command =>  './configure'  '--enable-fpm'
+Server API => Command Line Interface
+Virtual Directory Support => disabled
+Configuration File (php.ini) Path => /usr/local/lib
+Loaded Configuration File => /usr/local/lib/php.ini
+Scan this dir for additional .ini files => (none)
+Additional .ini files parsed => (none)
+PHP API => 20090626
+PHP Extension => 20090626
+Zend Extension => 220090626
+Zend Extension Build => API220090626,NTS
+PHP Extension Build => API20090626,NTS
+Debug Build => no
+Thread Safety => disabled
+Zend Memory Manager => enabled
+Zend Multibyte Support => disabled
+IPv6 Support => enabled
+Registered PHP Streams => php, file, glob, data, http, ftp, phar  
+Registered Stream Socket Transports => tcp, udp, unix, udg
+Registered Stream Filters => convert.iconv.*, string.rot13, string.toupper, string.tolower, string.strip_tags, convert.*, consumed, dechunk
+
+
+This program makes use of the Zend Scripting Language Engine:
+Zend Engine v2.3.0, Copyright (c) 1998-2010 Zend Technologies
+
+
+ _______________________________________________________________________
+
+
+Configuration
+
+Core
+
+PHP Version => 5.3.3
+
+Directive => Local Value => Master Value
+allow_call_time_pass_reference => Off => Off
+allow_url_fopen => On => On
+allow_url_include => Off => Off
+always_populate_raw_post_data => Off => Off
+arg_separator.input => & => &
+arg_separator.output => & => &
+asp_tags => Off => Off
+auto_append_file => no value => no value
+auto_globals_jit => On => On
+auto_prepend_file => no value => no value
+browscap => no value => no value
+default_charset => no value => no value
+default_mimetype => text/html => text/html
+define_syslog_variables => Off => Off
+disable_classes => no value => no value
+disable_functions => no value => no value
+display_errors => STDOUT => STDOUT
+display_startup_errors => On => On
+doc_root => no value => no value
+docref_ext => no value => no value
+docref_root => no value => no value
+enable_dl => Off => Off
+error_append_string => no value => no value
+error_log => no value => no value
+error_prepend_string => no value => no value
+error_reporting => 32767 => 32767
+exit_on_timeout => Off => Off
+expose_php => On => On
+extension_dir => /usr/local/lib/phpmodules => /usr/local/lib/phpmodules
+file_uploads => On => On
+highlight.bg => <font style="color: #FFFFFF">#FFFFFF</font> => <font style="color: #FFFFFF">#FFFFFF</font>
+highlight.comment => <font style="color: #FF8000">#FF8000</font> => <font style="color: #FF8000">#FF8000</font>
+highlight.default => <font style="color: #0000BB">#0000BB</font> => <font style="color: #0000BB">#0000BB</font>
+highlight.html => <font style="color: #000000">#000000</font> => <font style="color: #000000">#000000</font>
+highlight.keyword => <font style="color: #007700">#007700</font> => <font style="color: #007700">#007700</font>
+highlight.string => <font style="color: #DD0000">#DD0000</font> => <font style="color: #DD0000">#DD0000</font>
+html_errors => Off => Off
+ignore_repeated_errors => Off => Off
+ignore_repeated_source => Off => Off
+ignore_user_abort => Off => Off
+implicit_flush => On => On
+include_path => .:/usr/local/lib/php => .:/usr/local/lib/php
+log_errors => On => On
+log_errors_max_len => 1024 => 1024
+magic_quotes_gpc => Off => Off
+magic_quotes_runtime => Off => Off
+magic_quotes_sybase => Off => Off
+mail.add_x_header => On => On
+mail.force_extra_parameters => no value => no value
+mail.log => no value => no value
+max_execution_time => 0 => 0
+max_file_uploads => 20 => 20
+max_input_nesting_level => 64 => 64
+max_input_time => -1 => -1
+memory_limit => 128M => 128M
+open_basedir => no value => no value
+output_buffering => 0 => 0
+output_handler => no value => no value
+post_max_size => 8M => 8M
+precision => 14 => 14
+realpath_cache_size => 16K => 16K
+realpath_cache_ttl => 120 => 120
+register_argc_argv => On => On
+register_globals => Off => Off
+register_long_arrays => Off => Off
+report_memleaks => On => On
+report_zend_debug => Off => Off
+request_order => GP => GP
+safe_mode => Off => Off
+safe_mode_exec_dir => no value => no value
+safe_mode_gid => Off => Off
+safe_mode_include_dir => no value => no value
+sendmail_from => no value => no value
+sendmail_path => /usr/sbin/sendmail -t -i  => /usr/sbin/sendmail -t -i 
+serialize_precision => 100 => 100
+short_open_tag => Off => Off
+SMTP => localhost => localhost
+smtp_port => 25 => 25
+sql.safe_mode => Off => Off
+track_errors => On => On
+unserialize_callback_func => no value => no value
+upload_max_filesize => 20M => 20M
+upload_tmp_dir => no value => no value
+user_dir => no value => no value
+user_ini.cache_ttl => 300 => 300
+user_ini.filename => .user.ini => .user.ini
+variables_order => GPCS => GPCS
+xmlrpc_error_number => 0 => 0
+xmlrpc_errors => Off => Off
+y2k_compliance => On => On
+zend.enable_gc => On => On
+
+ctype
+
+ctype functions => enabled
+
+date
+
+date/time support => enabled
+"Olson" Timezone Database Version => 2010.9
+Timezone Database => internal
+Default timezone => Asia/Shanghai
+
+Directive => Local Value => Master Value
+date.default_latitude => 31.7667 => 31.7667
+date.default_longitude => 35.2333 => 35.2333
+date.sunrise_zenith => 90.583333 => 90.583333
+date.sunset_zenith => 90.583333 => 90.583333
+date.timezone => Asia/Shanghai => Asia/Shanghai
+
+dom
+
+DOM/XML => enabled
+DOM/XML API Version => 20031129
+libxml Version => 2.6.26
+HTML Support => enabled
+XPath Support => enabled
+XPointer Support => enabled
+Schema Support => enabled
+RelaxNG Support => enabled
+
+ereg
+
+Regex Library => Bundled library enabled
+
+fileinfo
+
+fileinfo support => enabled
+version => 1.0.5-dev
+
+filter
+
+Input Validation and Filtering => enabled
+Revision => $Revision: 298196 $
+
+Directive => Local Value => Master Value
+filter.default => unsafe_raw => unsafe_raw
+filter.default_flags => no value => no value
+
+hash
+
+hash support => enabled
+Hashing Engines => md2 md4 md5 sha1 sha224 sha256 sha384 sha512 ripemd128 ripemd160 ripemd256 ripemd320 whirlpool tiger128,3 tiger160,3 tiger192,3 tiger128,4 tiger160,4 tiger192,4 snefru snefru256 gost adler32 crc32 crc32b salsa10 salsa20 haval128,3 haval160,3 haval192,3 haval224,3 haval256,3 haval128,4 haval160,4 haval192,4 haval224,4 haval256,4 haval128,5 haval160,5 haval192,5 haval224,5 haval256,5 
+
+iconv
+
+iconv support => enabled
+iconv implementation => glibc
+iconv library version => 2.5
+
+Directive => Local Value => Master Value
+iconv.input_encoding => ISO-8859-1 => ISO-8859-1
+iconv.internal_encoding => ISO-8859-1 => ISO-8859-1
+iconv.output_encoding => ISO-8859-1 => ISO-8859-1
+
+json
+
+json support => enabled
+json version => 1.2.1
+
+libxml
+
+libXML support => active
+libXML Compiled Version => 2.6.26
+libXML Loaded Version => 20626
+libXML streams => enabled
+
+pcre
+
+PCRE (Perl Compatible Regular Expressions) Support => enabled
+PCRE Library Version => 8.02 2010-03-19
+
+Directive => Local Value => Master Value
+pcre.backtrack_limit => 100000 => 100000
+pcre.recursion_limit => 100000 => 100000
+
+PDO
+
+PDO support => enabled
+PDO drivers => sqlite, sqlite2
+
+pdo_sqlite
+
+PDO Driver for SQLite 3.x => enabled
+SQLite Library => 3.6.23.1
+
+Phar
+
+Phar: PHP Archive support => enabled
+Phar EXT version => 2.0.1
+Phar API version => 1.1.1
+SVN revision => $Revision: 298908 $
+Phar-based phar archives => enabled
+Tar-based phar archives => enabled
+ZIP-based phar archives => enabled
+gzip compression => disabled (install ext/zlib)
+bzip2 compression => disabled (install pecl/bz2)
+OpenSSL support => disabled (install ext/openssl)
+
+
+Phar based on pear/PHP_Archive, original concept by Davey Shafik.
+Phar fully realized by Gregory Beaver and Marcus Boerger.
+Portions of tar implementation Copyright (c) 2003-2009 Tim Kientzle.
+Directive => Local Value => Master Value
+phar.cache_list => no value => no value
+phar.readonly => On => On
+phar.require_hash => On => On
+
+posix
+
+Revision => $Revision: 300764 $
+
+Reflection
+
+Reflection => enabled
+Version => $Revision: 300393 $
+
+session
+
+Session Support => enabled
+Registered save handlers => files user sqlite 
+Registered serializer handlers => php php_binary 
+
+Directive => Local Value => Master Value
+session.auto_start => Off => Off
+session.bug_compat_42 => On => On
+session.bug_compat_warn => On => On
+session.cache_expire => 180 => 180
+session.cache_limiter => nocache => nocache
+session.cookie_domain => no value => no value
+session.cookie_httponly => Off => Off
+session.cookie_lifetime => 0 => 0
+session.cookie_path => / => /
+session.cookie_secure => Off => Off
+session.entropy_file => no value => no value
+session.entropy_length => 0 => 0
+session.gc_divisor => 1000 => 1000
+session.gc_maxlifetime => 1440 => 1440
+session.gc_probability => 1 => 1
+session.hash_bits_per_character => 5 => 5
+session.hash_function => 0 => 0
+session.name => PHPSESSID => PHPSESSID
+session.referer_check => no value => no value
+session.save_handler => files => files
+session.save_path => no value => no value
+session.serialize_handler => php => php
+session.use_cookies => On => On
+session.use_only_cookies => On => On
+session.use_trans_sid => 0 => 0
+
+SimpleXML
+
+Simplexml support => enabled
+Revision => $Revision: 299424 $
+Schema support => enabled
+
+SPL
+
+SPL support => enabled
+Interfaces => Countable, OuterIterator, RecursiveIterator, SeekableIterator, SplObserver, SplSubject
+Classes => AppendIterator, ArrayIterator, ArrayObject, BadFunctionCallException, BadMethodCallException, CachingIterator, DirectoryIterator, DomainException, EmptyIterator, FilesystemIterator, FilterIterator, GlobIterator, InfiniteIterator, InvalidArgumentException, IteratorIterator, LengthException, LimitIterator, LogicException, MultipleIterator, NoRewindIterator, OutOfBoundsException, OutOfRangeException, OverflowException, ParentIterator, RangeException, RecursiveArrayIterator, RecursiveCachingIterator, RecursiveDirectoryIterator, RecursiveFilterIterator, RecursiveIteratorIterator, RecursiveRegexIterator, RecursiveTreeIterator, RegexIterator, RuntimeException, SplDoublyLinkedList, SplFileInfo, SplFileObject, SplFixedArray, SplHeap, SplMinHeap, SplMaxHeap, SplObjectStorage, SplPriorityQueue, SplQueue, SplStack, SplTempFileObject, UnderflowException, UnexpectedValueException
+
+SQLite
+
+SQLite support => enabled
+PECL Module version => 2.0-dev $Id: sqlite.c 298697 2010-04-28 12:10:10Z iliaa $
+SQLite Library => 2.8.17
+SQLite Encoding => iso8859
+
+Directive => Local Value => Master Value
+sqlite.assoc_case => 0 => 0
+
+sqlite3
+
+SQLite3 support => enabled
+SQLite3 module version => 0.7-dev
+SQLite Library => 3.6.23.1
+
+Directive => Local Value => Master Value
+sqlite3.extension_dir => no value => no value
+
+standard
+
+Dynamic Library Support => enabled
+Path to sendmail => /usr/sbin/sendmail -t -i 
+
+Directive => Local Value => Master Value
+assert.active => 1 => 1
+assert.bail => 0 => 0
+assert.callback => no value => no value
+assert.quiet_eval => 0 => 0
+assert.warning => 1 => 1
+auto_detect_line_endings => 0 => 0
+default_socket_timeout => 60 => 60
+safe_mode_allowed_env_vars => PHP_ => PHP_
+safe_mode_protected_env_vars => LD_LIBRARY_PATH => LD_LIBRARY_PATH
+url_rewriter.tags => a=href,area=href,frame=src,input=src,form=fakeentry => a=href,area=href,frame=src,input=src,form=fakeentry
+user_agent => no value => no value
+
+tokenizer
+
+Tokenizer Support => enabled
+
+xml
+
+XML Support => active
+XML Namespace Support => active
+libxml2 Version => 2.6.26
+
+xmlreader
+
+XMLReader => enabled
+
+xmlwriter
+
+XMLWriter => enabled
+
+Additional Modules
+
+Module Name
+
+Environment
+
+Variable => Value
+SSH_AGENT_PID => 4784
+HOSTNAME => localhost.localdomain
+DESKTOP_STARTUP_ID =>  
+TERM => xterm
+SHELL => /bin/bash
+HISTSIZE => 1000
+GTK_RC_FILES => /etc/gtk/gtkrc:/home/james/.gtkrc-1.2-gnome2
+WINDOWID => 54526034
+USER => james
+LS_COLORS => no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:
+GNOME_KEYRING_SOCKET => /tmp/keyring-CqoPl6/socket
+SSH_AUTH_SOCK => /tmp/ssh-NOesXd4749/agent.4749
+SESSION_MANAGER => local/localhost.localdomain:/tmp/.ICE-unix/4749
+USERNAME => james
+MAIL => /var/spool/mail/james
+PATH => /usr/kerberos/bin:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/home/james/bin
+DESKTOP_SESSION => default
+QT_IM_MODULE => scim
+GDM_XSERVER_LOCATION => local
+INPUTRC => /etc/inputrc
+PWD => /home/james/test/php
+XMODIFIERS => @im=SCIM
+LANG => en_US.UTF-8
+GDMSESSION => default
+SSH_ASKPASS => /usr/libexec/openssh/gnome-ssh-askpass
+SHLVL => 2
+HOME => /home/james
+GNOME_DESKTOP_SESSION_ID => Default
+LOGNAME => james
+DBUS_SESSION_BUS_ADDRESS => unix:abstract=/tmp/dbus-yjemWYnU3T,guid=7dab98ae54b5e9206a2a2b004c7df203
+LESSOPEN => |/usr/bin/lesspipe.sh %s
+DISPLAY => :0.0
+GTK_IM_MODULE => scim-bridge
+G_BROKEN_FILENAMES => 1
+COLORTERM => gnome-terminal
+XAUTHORITY => /tmp/.gdmC6W4HV
+_ => ./info.php
+OLDPWD => /home/james/php-src/php-5.3.3
+
+PHP Variables
+
+Variable => Value
+_SERVER["SSH_AGENT_PID"] => 4784
+_SERVER["HOSTNAME"] => localhost.localdomain
+_SERVER["DESKTOP_STARTUP_ID"] => 
+_SERVER["TERM"] => xterm
+_SERVER["SHELL"] => /bin/bash
+_SERVER["HISTSIZE"] => 1000
+_SERVER["GTK_RC_FILES"] => /etc/gtk/gtkrc:/home/james/.gtkrc-1.2-gnome2
+_SERVER["WINDOWID"] => 54526034
+_SERVER["USER"] => james
+_SERVER["LS_COLORS"] => no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:
+_SERVER["GNOME_KEYRING_SOCKET"] => /tmp/keyring-CqoPl6/socket
+_SERVER["SSH_AUTH_SOCK"] => /tmp/ssh-NOesXd4749/agent.4749
+_SERVER["SESSION_MANAGER"] => local/localhost.localdomain:/tmp/.ICE-unix/4749
+_SERVER["USERNAME"] => james
+_SERVER["MAIL"] => /var/spool/mail/james
+_SERVER["PATH"] => /usr/kerberos/bin:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/home/james/bin
+_SERVER["DESKTOP_SESSION"] => default
+_SERVER["QT_IM_MODULE"] => scim
+_SERVER["GDM_XSERVER_LOCATION"] => local
+_SERVER["INPUTRC"] => /etc/inputrc
+_SERVER["PWD"] => /home/james/test/php
+_SERVER["XMODIFIERS"] => @im=SCIM
+_SERVER["LANG"] => en_US.UTF-8
+_SERVER["GDMSESSION"] => default
+_SERVER["SSH_ASKPASS"] => /usr/libexec/openssh/gnome-ssh-askpass
+_SERVER["SHLVL"] => 2
+_SERVER["HOME"] => /home/james
+_SERVER["GNOME_DESKTOP_SESSION_ID"] => Default
+_SERVER["LOGNAME"] => james
+_SERVER["DBUS_SESSION_BUS_ADDRESS"] => unix:abstract=/tmp/dbus-yjemWYnU3T,guid=7dab98ae54b5e9206a2a2b004c7df203
+_SERVER["LESSOPEN"] => |/usr/bin/lesspipe.sh %s
+_SERVER["DISPLAY"] => :0.0
+_SERVER["GTK_IM_MODULE"] => scim-bridge
+_SERVER["G_BROKEN_FILENAMES"] => 1
+_SERVER["COLORTERM"] => gnome-terminal
+_SERVER["XAUTHORITY"] => /tmp/.gdmC6W4HV
+_SERVER["_"] => ./info.php
+_SERVER["OLDPWD"] => /home/james/php-src/php-5.3.3
+_SERVER["PHP_SELF"] => ./info.php
+_SERVER["SCRIPT_NAME"] => ./info.php
+_SERVER["SCRIPT_FILENAME"] => ./info.php
+_SERVER["PATH_TRANSLATED"] => ./info.php
+_SERVER["DOCUMENT_ROOT"] => 
+_SERVER["REQUEST_TIME"] => 1283327939
+_SERVER["argv"] => Array
+(
+    [0] => ./info.php
+)
+
+_SERVER["argc"] => 1
+
+PHP License
+This program is free software; you can redistribute it and/or modify
+it under the terms of the PHP License as published by the PHP Group
+and included in the distribution in the file:  LICENSE
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+If you did not receive a copy of the PHP license, or have any
+questions about PHP licensing, please contact license@php.net.

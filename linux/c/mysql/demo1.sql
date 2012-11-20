@@ -1,0 +1,61 @@
+-- MySQL dump 10.11
+--
+-- Host: localhost    Database: demo1
+-- ------------------------------------------------------
+-- Server version	5.0.77
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+CREATE DATABASE demo1;
+USE demo1;
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `users` (
+  `user_id` smallint(6) unsigned NOT NULL auto_increment,
+  `user_name` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `user_pass` char(32) collate utf8_unicode_ci NOT NULL,
+  `user_group` smallint(6) unsigned NOT NULL default '0',
+  `user_rights` text collate utf8_unicode_ci NOT NULL,
+  `user_type` tinyint(1) NOT NULL default '1',
+  `user_realname` varchar(32) collate utf8_unicode_ci NOT NULL,
+  `user_other` varchar(32) collate utf8_unicode_ci NOT NULL,
+  `user_reg_date` int(10) NOT NULL,
+  PRIMARY KEY  (`user_id`),
+  UNIQUE KEY `user_name` (`user_name`)
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'root','e10adc3949ba59abbe56e057f20f883e',1,'all',1,'root','root',1288766954),(6,'root2010','96e79218965eb72c92a549dd5a330112',3,'all',1,'root2010','root2010',1288602025),(16,'test5','e10adc3949ba59abbe56e057f20f883e',3,'44,45,46,47,1,2,3,4,5,6,48,7,8,9,10,11,12,43,49,50,70,71,72,73,74,75,79,13,14,15,16,17,51,52,53,54,55,56,57,78,18,19,20,21,58,59,90,91,92,93,94,95,96,101,102,103,22,23,24,25,26,27,76,77,80,81,28,29,30,31,32,33,34,35,60,61,62,63,64,65,66,67,68,69,36,37,38,39,40,41,42,82,83,84,85,86,87,88,89,97,98,99,100',3,'','',1288603264),(17,'test4-1','e10adc3949ba59abbe56e057f20f883e',4,'1,2,3,4,5,6,36,37,38,39,40,41,42,97,98,99,100',2,'','',1287712722),(18,'admin','96e79218965eb72c92a549dd5a330112',1,'1,2,3,4,5,6',1,'','',1274337026),(21,'test8','e10adc3949ba59abbe56e057f20f883e',4,'36,37,38,39,40,41,42',1,'','',1274346274),(23,'linchunyu','bf8d450440d73c8bfc3b212786c1283d',1,'1,2,3,4,5,6,7,8,9,10,11,12,43,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42',1,'','',1274768758),(24,'535','e10adc3949ba59abbe56e057f20f883e',0,'42',1,'','',1278997149),(38,'ttttt','e10adc3949ba59abbe56e057f20f883e',33,'42',1,'','',1281348149),(30,'test3X1','e10adc3949ba59abbe56e057f20f883e',4,'44,45,46,47,1,2,3,4,5,6,48,7,8,9,10,11,12,43,49,50,70,71,72,73,74,75,13,14,15,16,17,51,52,53,54,55,56,57,18,19,20,21,58,59,22,23,24,25,26,27,76,77,28,29,30,31,32,33,34,35,60,61,62,63,64,65,66,67,68,69,36,37,38,39,40,41,42',1,'','',1281414455),(31,'admin1','e10adc3949ba59abbe56e057f20f883e',0,'42',1,'','',1274336904),(32,'admin2','e10adc3949ba59abbe56e057f20f883e',4,'42',1,'','',1274336768),(37,'fang','96e79218965eb72c92a549dd5a330112',0,'33,42',1,'','',1277971321),(39,'yiqinfei','e10adc3949ba59abbe56e057f20f883e',0,'42',1,'','',1284962776),(40,'admin888','7fef6171469e80d32c0559f88b377245',23,'42,82',1,'','',1285554584),(41,'root-m','e10adc3949ba59abbe56e057f20f883e',6,'44,45,46,47,1,2,3,4,5,6,48,7,8,9,10,11,12,43,49,50,70,71,72,73,74,75,79,13,14,15,16,17,51,52,53,54,55,56,57,78,18,19,20,21,58,59,22,23,24,25,26,27,76,77,80,81,28,29,30,31,32,33,34,35,60,61,62,63,64,65,66,67,68,69,36,37,38,39,40,41,42,82,83,84,85,86,87,88,89',2,'','',1285579544),(42,'bbbbbb','875f26fdb1cecf20ceb4ca028263dec6',33,'42',2,'','',1286605283),(43,'cccccc','c1f68ec06b490b3ecb4066b1b13a9ee9',33,'42',2,'','',1286605433),(44,'aaaaaa','e10adc3949ba59abbe56e057f20f883e',33,'42,97,98,99,100',2,'','',1287733438),(45,'phptest','e10adc3949ba59abbe56e057f20f883e',4,'42',2,'','',1288237272),(46,'php2010','e10adc3949ba59abbe56e057f20f883e',22,'42',3,'PHP2','php2',1288602063),(47,'ttgghh','e10adc3949ba59abbe56e057f20f883e',0,'42',1,'dd','root',1288766527),(48,'noroot','e10adc3949ba59abbe56e057f20f883e',1,'44,45,46,47,1,2,3,4,5,6,48,7,8,9,10,11,12,43,49,50,70,71,72,73,74,75,79,13,14,15,16,17,51,52,53,54,55,56,57,78,18,19,20,21,58,59,90,91,92,93,94,95,96,101,102,103,22,23,24,25,26,27,76,77,80,81,28,29,30,31,32,33,34,35,60,61,62,63,64,65,66,67,68,69,36,37,38,39,40,41,42,82,83,84,85,86,87,88,89,97,98,99,100',1,'noroot','noroot',1288835784);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2010-11-04  9:58:15

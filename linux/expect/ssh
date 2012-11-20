@@ -1,0 +1,21 @@
+#!/usr/bin/expect -f
+
+set password "123456"
+set ipaddr "192.168.0.2"
+set username "james"
+
+set timeout -1
+
+spawn ssh $username@$ipaddr
+
+match_max 100000
+
+expect "*?password:*"
+
+send -- "$password\r"
+
+send -- "\r"
+
+#expect eof
+interact
+

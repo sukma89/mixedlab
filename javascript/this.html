@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>this keywords</title>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<h1>this keywords</h1>
+		<input id="clickBut" type="button" value="Click me" onclick="doSomething()" /><br />
+		<input id="timeoutBut" type="button" value="Timeout" />
+		<div id="timeshow">0</div>
+		<script type="text/javascript">
+		function doSomething() {
+			console.log(this);
+		}
+
+		document.getElementById('clickBut').ondblclick = doSomething;
+
+		var ts = document.getElementById('timeshow');
+
+		function _timeout() {
+			ts.innerHTML = ' > ' + new Date();
+			//console.log(this);
+		}
+
+		document.getElementById('timeoutBut').onclick = function () {
+			setTimeout(_timeout, 1000);
+		}
+
+		this.onload = function () {
+			console.log('Page is loaded.');
+			console.log(this);
+		};
+		
+		function thisFunc () {
+			console.log('thisFunc: ' + this);
+			console.log(this);
+			var a = 10;
+			return function () {
+				console.log('thisFunc#_func: ' + this);	
+				console.log(this);
+				console.log(this.a);
+				console.log(a);
+			};
+		}
+		var t = thisFunc();
+		t();
+
+		function thisClass() {
+			console.log('thisClass: ' + this);
+			console.log(this);
+			this.a = 10;
+			this.m = function () {
+				console.log('thisClass#_func: ' + this);	
+				console.log(this);
+				console.log(this.a);
+			};
+		}
+
+		var tc = new thisClass();
+		tc.m();
+		</script>
+	</body>
+</html>

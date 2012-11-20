@@ -1,0 +1,5 @@
+#!/bin/bash
+
+STR="/usr/bin:/usr/local/bin:/usr/local/php/bin"
+
+echo ${STR/\/php\//\/php54\/}

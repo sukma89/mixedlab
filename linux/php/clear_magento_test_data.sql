@@ -1,0 +1,92 @@
+SET FOREIGN_KEY_CHECKS=0;
+
+TRUNCATE `sales_order`;
+TRUNCATE `sales_order_datetime`;
+TRUNCATE `sales_order_decimal`;
+TRUNCATE `sales_order_entity`;
+TRUNCATE `sales_order_entity_datetime`;
+TRUNCATE `sales_order_entity_decimal`;
+TRUNCATE `sales_order_entity_int`;
+TRUNCATE `sales_order_entity_text`;
+TRUNCATE `sales_order_entity_varchar`;
+TRUNCATE `sales_order_int`;
+TRUNCATE `sales_order_text`;
+TRUNCATE `sales_order_varchar`;
+TRUNCATE `sales_flat_quote`;
+TRUNCATE `sales_flat_quote_address`;
+TRUNCATE `sales_flat_quote_address_item`;
+TRUNCATE `sales_flat_quote_item`;
+TRUNCATE `sales_flat_quote_item_option`;
+TRUNCATE `sales_flat_order_item`;
+TRUNCATE `sendfriend_log`;
+TRUNCATE `tag`;
+TRUNCATE `tag_relation`;
+TRUNCATE `tag_summary`;
+TRUNCATE `wishlist`;
+TRUNCATE `log_quote`;
+TRUNCATE `report_event`;
+
+ALTER TABLE `sales_order` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_datetime` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_decimal` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_entity` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_entity_datetime` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_entity_decimal` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_entity_int` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_entity_text` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_entity_varchar` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_int` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_text` AUTO_INCREMENT=1;
+ALTER TABLE `sales_order_varchar` AUTO_INCREMENT=1;
+ALTER TABLE `sales_flat_quote` AUTO_INCREMENT=1;
+ALTER TABLE `sales_flat_quote_address` AUTO_INCREMENT=1;
+ALTER TABLE `sales_flat_quote_address_item` AUTO_INCREMENT=1;
+ALTER TABLE `sales_flat_quote_item` AUTO_INCREMENT=1;
+ALTER TABLE `sales_flat_quote_item_option` AUTO_INCREMENT=1;
+ALTER TABLE `sales_flat_order_item` AUTO_INCREMENT=1;
+ALTER TABLE `sendfriend_log` AUTO_INCREMENT=1;
+ALTER TABLE `tag` AUTO_INCREMENT=1;
+ALTER TABLE `tag_relation` AUTO_INCREMENT=1;
+ALTER TABLE `tag_summary` AUTO_INCREMENT=1;
+ALTER TABLE `wishlist` AUTO_INCREMENT=1;
+ALTER TABLE `log_quote` AUTO_INCREMENT=1;
+ALTER TABLE `report_event` AUTO_INCREMENT=1;
+
+-- reset customers
+TRUNCATE `customer_address_entity`;
+TRUNCATE `customer_address_entity_datetime`;
+TRUNCATE `customer_address_entity_decimal`;
+TRUNCATE `customer_address_entity_int`;
+TRUNCATE `customer_address_entity_text`;
+TRUNCATE `customer_address_entity_varchar`;
+TRUNCATE `customer_entity`;
+TRUNCATE `customer_entity_datetime`;
+TRUNCATE `customer_entity_decimal`;
+TRUNCATE `customer_entity_int`;
+TRUNCATE `customer_entity_text`;
+TRUNCATE `customer_entity_varchar`;
+TRUNCATE `log_customer`;
+TRUNCATE `log_visitor`;
+TRUNCATE `log_visitor_info`;
+
+ALTER TABLE `customer_address_entity` AUTO_INCREMENT=1;
+ALTER TABLE `customer_address_entity_datetime` AUTO_INCREMENT=1;
+ALTER TABLE `customer_address_entity_decimal` AUTO_INCREMENT=1;
+ALTER TABLE `customer_address_entity_int` AUTO_INCREMENT=1;
+ALTER TABLE `customer_address_entity_text` AUTO_INCREMENT=1;
+ALTER TABLE `customer_address_entity_varchar` AUTO_INCREMENT=1;
+ALTER TABLE `customer_entity` AUTO_INCREMENT=1;
+ALTER TABLE `customer_entity_datetime` AUTO_INCREMENT=1;
+ALTER TABLE `customer_entity_decimal` AUTO_INCREMENT=1;
+ALTER TABLE `customer_entity_int` AUTO_INCREMENT=1;
+ALTER TABLE `customer_entity_text` AUTO_INCREMENT=1;
+ALTER TABLE `customer_entity_varchar` AUTO_INCREMENT=1;
+ALTER TABLE `log_customer` AUTO_INCREMENT=1;
+ALTER TABLE `log_visitor` AUTO_INCREMENT=1;
+ALTER TABLE `log_visitor_info` AUTO_INCREMENT=1;
+
+-- Reset all ID counters
+TRUNCATE `eav_entity_store`;
+ALTER TABLE  `eav_entity_store` AUTO_INCREMENT=1;
+
+SET FOREIGN_KEY_CHECKS=1;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chrome notification demo</title>
+		<meta charset="utf-8" />
+		<script type="text/javascript">
+		<!--
+		//http://www.210computing.com/google/chrome_notifications.html
+		//http://slides.html5rocks.com/#notifications-api
+		//http://www.chromium.org/developers/design-documents/desktop-notifications/api-specification
+		function setAllowPermission() {
+			if (window.webkitNotifications.checkPermission() != 0) {
+				window.webkitNotifications.requestPermission();
+			}
+		}
+
+		function setMessage() {
+			var msg = document.getElementById('message').value;
+			if (msg.length < 1) {
+				msg = 'No message content.';
+			}
+			var n = window.webkitNotifications.createNotification('http://fwso.cn/favicon.ico', 'Notify Demo', msg);
+			n.show();
+		}
+
+		window.onload = function () {
+			//Why this does not work, only use action can trigger it?
+			setAllowPermission();	
+		};
+		//-->
+		</script>
+	</head>
+	<body>
+		<h1>Chrome notification demo</h1>
+		<input type="button" value="Request permission" onclick="setAllowPermission()" />
+		<input type="text" id="message" />
+		<input type="button" value="Set Message" onclick="setMessage()" />
+	</body>
+</html>

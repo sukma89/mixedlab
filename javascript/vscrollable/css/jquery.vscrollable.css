@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+
+/**
+ * 
+ */
+
+#vscrollable.vscrollable {
+	width:900px;
+}
+
+#vscrollable .vprevPage,#vscrollable .vnextPage,#vscrollable .vscrollContent {
+	height:140px;
+}
+
+#vscrollable .vprevPage,#vscrollable .vscrollContent {
+	float:left;
+}
+
+#vscrollable .vprevPage {
+	margin:0 20px 0 0;
+}
+
+#vscrollable .vnextPage {
+	float:right;
+}
+
+#vscrollable .vprevPage, .vnextPage {
+	display:block;
+	width:20px;
+	background:#36F;
+}
+
+#vscrollable .vscrollContent {
+	position:relative;
+	width:840px;
+	overflow:hidden;
+}
+
+#vscrollable .vscrollContent .vscrollInner {
+	position:absolute;
+	left:0;
+	top:0;
+}
+
+#vscrollable .vscrollContent ul, #vscrollable .vscrollContent ul li {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+#vscrollable .vscrollContent ul li {
+	height:140px;
+	width:120px;
+	margin:0 20px 0 0;
+	display:block;
+	float:left;
+	background:#EFEFEF;
+	overflow:hidden;
+}

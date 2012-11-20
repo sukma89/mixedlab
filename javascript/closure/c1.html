@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Closure demo 1</title>
+		<meta charset="utf-8" />
+		<script type="text/javascript">
+			//An faulty example
+			function addLinks () {
+				for (var i=0, link; i<5; i++) {
+					link = document.createElement("div");
+					link.innerHTML = "Link " + i;
+					link.onclick = function () {
+						alert(i);
+					};
+					document.body.appendChild(link);
+				}
+			}
+		window.onload = addLinks;
+		</script>
+	</head>
+	<body>
+		<h1>Closure demo 1(an faulty example)</h1>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<?php 
+/**
+ * Requires: services-2.x, jsonrpc_server
+ * 
+ * == Usage ==
+
+Content-Type:application/json\r\n
+Cookie:PHPSESSID=nna0mqaugif1u9a4hvjtfh4cb7; SESSa2a62f9e24412d0799c07a833afc34f7=qt8kga99v8jcicegor1vilmk54; has_js=1\r\n
+\r\n
+{"id":1, "method":"node.jlist", "jsonrpc":"2.0", "params": {"type":"story", "limit": 10} }
+
+ * == Use Curl for testing ==
+
+curl -v -X POST -H "Content-Type: application/json" -H "Accept: application/json" -b "SESSa2a62f9e24412d0799c07a833afc34f7=2h7oipc3pct41a06varr6i9ut1; has_js=1" -d '{"id":1, "method":"node.jlist", "jsonrpc":"2.0", "params": {"type":"story", "limit": 10} }' http://drupal6.47.lan.gz/services/json-rpc
+
+*/
+
+
+/**
+ * Implementation of hook_service().
+ */
+function jservices_service() {
+	return array(
+			
+	// node.jlist
+	array(
+		'#method' => 'node.jlist',
+		'#callback' => 'jservices_jlist',
+		'#access callback'  => 'jservices_jlist_access',
+		//'#file'             => array('file' => 'inc', 'module' => 'node_service'),
+		'#args' => array(
+				array(
+					'#name' => 'type',
+					'#type' => 'string',
+					'#description' => t('the node type.')
+				),
+				
+				array(
+						'#name' => 'limit',
+						'#type' => 'int',
+						'#optional' => true,
+						'#description' => t('Limit numbers.')
+				),
+		),
+		'#return' => 'array',
+		'#help' => t('Returns a node list.')),
+	);
+}
+
+function jservices_jlist($type, $limit=5, $orderby='nid DESC') {
+	
+	$limit = $limit > 0 ? (int) $limit : 5;
+	
+	$sql = "SELECT nid FROM {node} WHERE `type`='%s'" . (strlen($orderby) > 0 ? ' ORDER BY ' . $orderby : '') . " LIMIT %d";
+	$result = db_query($sql, array($type, $limit));
+	
+	$nodes = array();
+	
+	while ( ($row = db_fetch_array($result)) ) {
+		$nodes[] = $row['nid'];//node_load($row['nid']);
+	}
+	
+	return $nodes;
+}
+
+function jservices_jlist_access() {
+	return user_access('view content');
+}

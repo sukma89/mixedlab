@@ -1,0 +1,12 @@
+
+name = Services example[J]
+description = Demonstrates how to provides service methods
+core = 6.x
+package = Example modules
+
+; Information added by drupal.org packaging script on 2011-08-15
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "examples"
+datestamp = "1313410025"
+

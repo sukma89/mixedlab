@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kill `cat /usr/local/phpb2/var/run/php-fpm.pid`

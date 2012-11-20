@@ -1,0 +1,266 @@
+mysql> LOAD DATA INFILE place.txt INTO TABLE airquality.locations;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'place.txt INTO TABLE airquality.locations' at line 1
+mysql> LOAD DATA INFILE place.txt INTO TABLE airquality.locations FIELDS TERMINATED BY ',';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'place.txt INTO TABLE airquality.locations FIELDS TERMINATED BY ','' at line 1
+mysql> SELECT * FROM locations;
+Empty set (0.00 sec)
+
+mysql> DESCRIBE locations;
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| city        | varchar(20)      | NO   | MUL | NULL    |                |
+| location_id | varchar(20)      | NO   | MUL | NULL    |                |
+| name        | varchar(20)      | NO   |     | NULL    |                |
++-------------+------------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> LOAD DATA INFILE place.txt INTO TABLE airquality.locations(city, location_id, name) FIELDS TERMINATED BY ',';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'place.txt INTO TABLE airquality.locations(city, location_id, name) FIELDS TERMIN' at line 1
+mysql> LOAD DATA INFILE locations.txt INTO TABLE airquality.locations(city, location_id, name) FIELDS TERMINATED BY ',';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'locations.txt INTO TABLE airquality.locations(city, location_id, name) FIELDS TE' at line 1
+mysql> LOAD DATA INFILE locations.txt INTO TABLE airquality.locations FIELDS TERMINATED BY ',';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'locations.txt INTO TABLE airquality.locations FIELDS TERMINATED BY ','' at line 1
+mysql> LOAD DATA INFILE 'locations.txt' INTO TABLE airquality.locations(city, location_id, name) FIELDS TERMINATED BY ',';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FIELDS TERMINATED BY ','' at line 1
+mysql> LOAD DATA INFILE 'locations.txt' INTO TABLE airquality.locations(city, location_id, name);
+ERROR 13 (HY000): Can't get stat of '/var/lib/mysql/airquality/locations.txt' (Errcode: 2)
+mysql> LOAD DATA INFILE 'place.txt' INTO TABLE airquality.locations(location_id, name);
+ERROR 13 (HY000): Can't get stat of '/var/lib/mysql/airquality/place.txt' (Errcode: 2)
+mysql> LOAD DATA INFILE 'place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 13 (HY000): Can't get stat of '/var/lib/mysql/airquality/place.txt' (Errcode: 2)
+mysql> LOAD DATA INFILE './place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 13 (HY000): Can't get stat of '/var/lib/mysql/place.txt' (Errcode: 2)
+mysql> LOAD DATA INFILE '/home/james/projects/mixedlab/linux/awk/airquality/place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 29 (HY000): File '/home/james/projects/mixedlab/linux/awk/airquality/place.txt' not found (Errcode: 13)
+mysql> LOAD DATA INFILE '/home/james/projects/mixedlab/linux/awk/airquality/place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 29 (HY000): File '/home/james/projects/mixedlab/linux/awk/airquality/place.txt' not found (Errcode: 13)
+mysql> LOAD DATA INFILE '/tmp/place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 29 (HY000): File '/tmp/place.txt' not found (Errcode: 13)
+mysql> LOAD DATA LOCAL INFILE 'place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 1148 (42000): The used command is not allowed with this MySQL version
+mysql> SELECT VERSION();
++-------------------------+
+| VERSION()               |
++-------------------------+
+| 5.5.24-0ubuntu0.12.04.1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> LOAD DATA INFILE '/tmp/place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 29 (HY000): File '/tmp/place.txt' not found (Errcode: 13)
+mysql> LOAD DATA INFILE '/tmp/place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 29 (HY000): File '/tmp/place.txt' not found (Errcode: 13)
+mysql> LOAD DATA LOCAL INFILE '/tmp/place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 1148 (42000): The used command is not allowed with this MySQL version
+mysql> LOAD DATA  INFILE '/tmp/place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 29 (HY000): File '/tmp/place.txt' not found (Errcode: 13)
+mysql> exit
+mysql> LOAD DATA  INFILE 'place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+ERROR 13 (HY000): Can't get stat of '/var/lib/mysql/airquality/place.txt' (Errcode: 2)
+mysql> LOAD DATA  INFILE 'place.txt' INTO TABLE airquality.locations(location_id, name) SET id=NULL, city='beijing';
+Query OK, 26 rows affected, 26 warnings (0.04 sec)
+Records: 26  Deleted: 0  Skipped: 0  Warnings: 26
+
+mysql> SELECT * FROM locations;
++----+---------+---------------------------+------+
+| id | city    | location_id               | name |
++----+---------+---------------------------+------+
+|  1 | beijing | ds,东城东四               |      |
+|  2 | beijing | tt,东城天坛               |      |
+|  3 | beijing | gy,西城官园               |      |
+|  4 | beijing | wsxg,西城万寿西宫         |      |
+|  5 | beijing | atzx,朝阳奥体中心         |      |
+|  6 | beijing | nzg,朝阳农展馆            |      |
+|  7 | beijing | wl,海淀万柳               |      |
+|  8 | beijing | bbxq,海淀北部新区         |      |
+|  9 | beijing | zwy,海淀北京植物园        |      |
+| 10 | beijing | fthy,丰台花园             |      |
+| 11 | beijing | yg,丰台云岗               |      |
+| 12 | beijing | gc,石景山古城             |      |
+| 13 | beijing | yz,亦庄开发区             |      |
+| 14 | beijing | mtgq,门头沟龙泉镇         |      |
+| 15 | beijing | lx,房山良乡               |      |
+| 16 | beijing | tzq,通州新城              |      |
+| 17 | beijing | syq,顺义新城              |      |
+| 18 | beijing | cpq,昌平镇                |      |
+| 19 | beijing | dxq,大兴黄村镇            |      |
+| 20 | beijing | yf,大兴榆垡               |      |
+| 21 | beijing | pgq,平谷镇                |      |
+| 22 | beijing | hrq,怀柔镇                |      |
+| 23 | beijing | myx,密云镇                |      |
+| 24 | beijing | mysk,密云水库             |      |
+| 25 | beijing | yqx,延庆镇                |      |
+| 26 | beijing | bdl,延庆八达岭            |      |
++----+---------+---------------------------+------+
+26 rows in set (0.00 sec)
+
+mysql> SELECT * FROM locations;
+Empty set (0.00 sec)
+
+mysql> LOAD DATA  INFILE 'place.txt' INTO TABLE airquality.locations(location_id, name) FIELDS TERMILATED BY ',' SET id=NULL, city='beijing';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FIELDS TERMILATED BY ',' SET id=NULL, city='beijing'' at line 1
+mysql> LOAD DATA  INFILE 'place.txt' INTO TABLE airquality.locations(location_id, name) FIELDS TERMINATED BY ',' SET id=NULL, city='beijing';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FIELDS TERMINATED BY ',' SET id=NULL, city='beijing'' at line 1
+mysql> LOAD DATA  INFILE 'place.txt' INTO TABLE airquality.locations(location_id, name) FIELDS TERMINATED BY ',' SET id=NULL, city='beijing';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FIELDS TERMINATED BY ',' SET id=NULL, city='beijing'' at line 1
+mysql> LOAD DATA  INFILE 'place.txt' INTO TABLE airquality.locations FIELDS TERMINATED BY ',' SET id=NULL, city='beijing';
+Query OK, 26 rows affected, 78 warnings (0.06 sec)
+Records: 26  Deleted: 0  Skipped: 0  Warnings: 78
+
+mysql> SELECT * FROM locations;
++----+---------+-------------+------+
+| id | city    | location_id | name |
++----+---------+-------------+------+
+|  1 | beijing |             |      |
+|  2 | beijing |             |      |
+|  3 | beijing |             |      |
+|  4 | beijing |             |      |
+|  5 | beijing |             |      |
+|  6 | beijing |             |      |
+|  7 | beijing |             |      |
+|  8 | beijing |             |      |
+|  9 | beijing |             |      |
+| 10 | beijing |             |      |
+| 11 | beijing |             |      |
+| 12 | beijing |             |      |
+| 13 | beijing |             |      |
+| 14 | beijing |             |      |
+| 15 | beijing |             |      |
+| 16 | beijing |             |      |
+| 17 | beijing |             |      |
+| 18 | beijing |             |      |
+| 19 | beijing |             |      |
+| 20 | beijing |             |      |
+| 21 | beijing |             |      |
+| 22 | beijing |             |      |
+| 23 | beijing |             |      |
+| 24 | beijing |             |      |
+| 25 | beijing |             |      |
+| 26 | beijing |             |      |
++----+---------+-------------+------+
+26 rows in set (0.00 sec)
+
+mysql> SELECT * FROM locations;
++----+---------+-------------+------+
+| id | city    | location_id | name |
++----+---------+-------------+------+
+|  1 | beijing |             |      |
+|  2 | beijing |             |      |
+|  3 | beijing |             |      |
+|  4 | beijing |             |      |
+|  5 | beijing |             |      |
+|  6 | beijing |             |      |
+|  7 | beijing |             |      |
+|  8 | beijing |             |      |
+|  9 | beijing |             |      |
+| 10 | beijing |             |      |
+| 11 | beijing |             |      |
+| 12 | beijing |             |      |
+| 13 | beijing |             |      |
+| 14 | beijing |             |      |
+| 15 | beijing |             |      |
+| 16 | beijing |             |      |
+| 17 | beijing |             |      |
+| 18 | beijing |             |      |
+| 19 | beijing |             |      |
+| 20 | beijing |             |      |
+| 21 | beijing |             |      |
+| 22 | beijing |             |      |
+| 23 | beijing |             |      |
+| 24 | beijing |             |      |
+| 25 | beijing |             |      |
+| 26 | beijing |             |      |
++----+---------+-------------+------+
+26 rows in set (0.00 sec)
+
+mysql> LOAD DATA  INFILE 'place.txt' INTO TABLE airquality.locations FIELDS TERMINATED BY ',' (location_id, name) SET id=NULL, city='beijing';
+Query OK, 26 rows affected (0.07 sec)
+Records: 26  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> SELECT * FROM locations;
++----+---------+-------------+-----------------------+
+| id | city    | location_id | name                  |
++----+---------+-------------+-----------------------+
+|  1 | beijing | ds          | 东城东四              |
+|  2 | beijing | tt          | 东城天坛              |
+|  3 | beijing | gy          | 西城官园              |
+|  4 | beijing | wsxg        | 西城万寿西宫          |
+|  5 | beijing | atzx        | 朝阳奥体中心          |
+|  6 | beijing | nzg         | 朝阳农展馆            |
+|  7 | beijing | wl          | 海淀万柳              |
+|  8 | beijing | bbxq        | 海淀北部新区          |
+|  9 | beijing | zwy         | 海淀北京植物园        |
+| 10 | beijing | fthy        | 丰台花园              |
+| 11 | beijing | yg          | 丰台云岗              |
+| 12 | beijing | gc          | 石景山古城            |
+| 13 | beijing | yz          | 亦庄开发区            |
+| 14 | beijing | mtgq        | 门头沟龙泉镇          |
+| 15 | beijing | lx          | 房山良乡              |
+| 16 | beijing | tzq         | 通州新城              |
+| 17 | beijing | syq         | 顺义新城              |
+| 18 | beijing | cpq         | 昌平镇                |
+| 19 | beijing | dxq         | 大兴黄村镇            |
+| 20 | beijing | yf          | 大兴榆垡              |
+| 21 | beijing | pgq         | 平谷镇                |
+| 22 | beijing | hrq         | 怀柔镇                |
+| 23 | beijing | myx         | 密云镇                |
+| 24 | beijing | mysk        | 密云水库              |
+| 25 | beijing | yqx         | 延庆镇                |
+| 26 | beijing | bdl         | 延庆八达岭            |
++----+---------+-------------+-----------------------+
+26 rows in set (0.00 sec)
+
+mysql> INSERT INTO quality_data VALUES(NULL, 1, 12345, '', null, null, 101.1, 43.23, null, null);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT * FROM quality_data;
++----+-------------+-----------+-------------+------+------+--------+-------+------+-------+
+| id | location_id | timestamp | origin_time | so2  | no2  | pm10   | pm25  | co   | ozone |
++----+-------------+-----------+-------------+------+------+--------+-------+------+-------+
+|  2 |           1 |     12345 |             | NULL | NULL | 101.10 | 43.23 | NULL |  NULL |
++----+-------------+-----------+-------------+------+------+--------+-------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> LOAD DATA  INFILE 'place.txt' INTO TABLE airquality.locations FIELDS TERMINATED BY ',' (location_id, name) SET id=NULL, city='beijing';
+Query OK, 26 rows affected (0.06 sec)
+Records: 26  Deleted: 0  Skipped: 0  Warnings: 0
+
+mysql> SELECT * FROM quality_data;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM locations;
++----+---------+-------------+-----------------------+
+| id | city    | location_id | name                  |
++----+---------+-------------+-----------------------+
+|  1 | beijing | ds          | 东城东四              |
+|  2 | beijing | tt          | 东城天坛              |
+|  3 | beijing | gy          | 西城官园              |
+|  4 | beijing | wsxg        | 西城万寿西宫          |
+|  5 | beijing | atzx        | 朝阳奥体中心          |
+|  6 | beijing | nzg         | 朝阳农展馆            |
+|  7 | beijing | wl          | 海淀万柳              |
+|  8 | beijing | bbxq        | 海淀北部新区          |
+|  9 | beijing | zwy         | 海淀北京植物园        |
+| 10 | beijing | fthy        | 丰台花园              |
+| 11 | beijing | yg          | 丰台云岗              |
+| 12 | beijing | gc          | 石景山古城            |
+| 13 | beijing | yz          | 亦庄开发区            |
+| 14 | beijing | mtgq        | 门头沟龙泉镇          |
+| 15 | beijing | lx          | 房山良乡              |
+| 16 | beijing | tzq         | 通州新城              |
+| 17 | beijing | syq         | 顺义新城              |
+| 18 | beijing | cpq         | 昌平镇                |
+| 19 | beijing | dxq         | 大兴黄村镇            |
+| 20 | beijing | yf          | 大兴榆垡              |
+| 21 | beijing | pgq         | 平谷镇                |
+| 22 | beijing | hrq         | 怀柔镇                |
+| 23 | beijing | myx         | 密云镇                |
+| 24 | beijing | mysk        | 密云水库              |
+| 25 | beijing | yqx         | 延庆镇                |
+| 26 | beijing | bdl         | 延庆八达岭            |
++----+---------+-------------+-----------------------+
+26 rows in set (0.00 sec)
+
+mysql> exit

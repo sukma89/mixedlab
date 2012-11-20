@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>Map Lab</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+<style type="text/css">
+body {
+	margin:0;
+	padding:0;
+	font-family:Arial;
+}
+
+#wrap {
+	width:800px;
+	height:650px;
+	margin:0px auto;
+}
+
+#jmapBox {
+	width:100%;
+	height:450px;
+	border:1px solid #CCC;
+}
+
+#mapPositionInfo {
+	width:280px;
+	padding:3px 10px;
+}
+
+#mapSavePosition {
+	padding:10px 0;
+	text-align:center;
+}
+
+#mapPositionInfoText {
+	
+}
+
+#addressInput {
+	width:400px;
+}
+
+</style>
+<!--
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=zh-CN"></script>
+-->
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="map.js"></script>
+
+</head>
+
+<body>
+
+<div id="wrap">
+	<h1>NexGene Map Lab</h1>
+
+	<div id="controlBar">
+		<form id="searchform">
+			<input type="text" id="addressInput" />
+			<input type="submit" id="doSearchBt" value="Search" />
+			<input type="button" id="savePositionBt" value="Save" />
+		</form>
+	</div>
+	<div id="jmapBox"></div>
+
+</div>
+</body>
+</html>

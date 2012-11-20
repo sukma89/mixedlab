@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>vScrollable</title>
+
+<link type="text/css" rel="stylesheet" href="css/jquery.vscrollable.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.vscrollable.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#vscrollable").vscrollable({itemHeight:140}).css({"color":"#F00"});
+});
+</script>
+</head>
+<body>
+<h1>vScrollable</h1>
+
+<div id="vscrollable" class="vscrollable">
+	
+	<a href="JavaScript:void(0);" class="vprevPage vpageNav">Previous Page</a>
+	
+	<div class="vscrollContent">
+		
+		<div class="vscrollInner">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+			<div style="clear:both;"></div>
+			
+			<ul>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+				<li>11</li>
+				<li>12</li>
+			</ul>
+			<div style="clear:both;"></div>
+			
+			<ul>
+				<li>13</li>
+				<li>14</li>
+				<li>15</li>
+				<li>16</li>
+				<li>17</li>
+				<li>18</li>
+			</ul>
+			<div style="clear:both;"></div>
+			
+			<ul>
+				<li>19</li>
+				<li>20</li>
+			</ul>
+			<div style="clear:both;"></div>
+		</div>
+		
+	</div>
+	
+	<a href="JavaScript:void(0);" class="vnextPage vpageNav">Next Page</a>
+	<div style="clear:both;"></div>
+	<div class="vscrollFooter">Page <span class="vpageCount"></span></div>
+</div>
+
+</body>
+</html>

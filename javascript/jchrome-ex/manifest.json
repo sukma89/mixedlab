@@ -1,0 +1,20 @@
+{
+  "name": "JChromeEX",
+  "version": "1.0",
+  "background_page": "pages/background.html",
+  "description": "Extension used to improve Chrome performance",
+  "icons": {"128": "images/java.png"},
+  "browser_action":{
+  	"default_icon": "images/icon.png",
+	"default_popup": "pages/setting.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*.google.com/*", "http://*.google.com.hk/*"],
+      "js": ["js/jquery-1.4.2.min.js", "js/main-action.js"]
+    }
+  ],
+  "permissions":["tabs", "http://fwso.cn/", "http://*.google.com/*", "http://www.google.com.hk/*", "http://www.google.com/notebook"]
+
+}
+

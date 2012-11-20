@@ -1,0 +1,4 @@
+./configure --enable-fpm --with-openssl --with-zlib --enable-calendar --with-curl --with-curlwrappers --enable-ftp --enable-mbstring --with-mysql --with-mysqli --with-pdo-mysql --enable-pcntl --enable-sockets --enable-zip --enable-soap --with-fpm-user=nginx --with-fpm-group=nginx --with-mcrypt=/usr/lib64 --prefix=/usr/local/phpb2 --with-jpeg-dir=/usr/lib64 --with-png-dir=/usr/lib64 --with-freetype-dir=/usr/lib64 --with-gd --with-gettext
+
+
+./configure --prefix=/usr/local/phpb2 --with-fpm-user=nginx --with-fpm-group=nginx --enable-fpm --with-openssl --with-zlib --enable-calendar --with-curl --with-curlwrappers --enable-ftp --enable-mbstring --with-mysql --with-mysqli --with-pdo-mysql --enable-pcntl --enable-sockets --enable-zip --enable-soap --with-gd --with-gettext --enable-exif --with-mysql-sock=/var/lib/mysql/mysql.sock --with-mcrypt=/usr/lib64 --with-jpeg-dir=/usr/lib64 --with-png-dir=/usr/lib64 --with-freetype-dir=/usr/lib64 --with-zend-vm=GOTO

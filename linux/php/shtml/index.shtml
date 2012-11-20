@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SSI demo</title>
+		<meta charset="utf-8" />
+	</head>
+
+	<body>
+		<h1>SSI Demo Header</h1>
+
+		<!--# include virtual="/content.php?$QUERY_STRING" -->
+
+		<p>
+		&copy; 2011 jphp.cc
+		</p>
+	</body>
+</html>

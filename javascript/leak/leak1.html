@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript Memory Leak Pattern 1</title>
+		<meta charset="utf-8" />
+	</head>
+	<body>
+		<h1>JavaScript Memory Leak Pattern 1</h1>
+		<div id="divItem">DIV Item</div>
+		<script type="text/javascript">
+		var obj;
+		window.onload = function () {
+			obj = document.getElementById('divItem');
+			document.getElementById('divItem').prop1 = obj;
+			obj.bigString = new Array(1000).join(new Array(1000).join('XXXXX'));	
+		};		
+		</script>
+	</body>
+</html>

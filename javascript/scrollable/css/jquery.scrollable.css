@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+
+/**
+ * 
+ */
+
+.scrollable {
+	width:900px;
+}
+
+.prevPage, .nextPage, .scrollContent {
+	height:140px;
+}
+
+.prevPage, .scrollContent {
+	float:left;
+}
+
+.prevPage {
+	margin:0 20px 0 0;
+}
+
+.nextPage {
+	float:right;
+}
+
+.prevPage, .nextPage {
+	display:block;
+	width:20px;
+	background:#36F;
+}
+
+.scrollContent {
+	position:relative;
+	width:840px;
+	overflow:hidden;
+}
+
+.scrollContent ul {
+	position:absolute;
+	left:-1400px;
+	top:0;
+}
+
+.scrollContent ul, .scrollContent ul li {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+.scrollContent ul li {
+	height:140px;
+	width:120px;
+	margin:0 20px 0 0;
+	display:block;
+	float:left;
+	background:#EFEFEF;
+	overflow:hidden;
+}

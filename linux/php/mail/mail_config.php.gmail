@@ -1,0 +1,9 @@
+<?php
+define('SMTP_HOST', 'smtp.gmail.com');
+define('SMTP_PORT', 465);
+define('SMTP_USER', 'eh.pharm@gmail.com');
+define('SMTP_PASS', 't200910!');
+define('SMTP_FROM', 'eh.pharm@gmail.com');
+define('SMTP_REPLY', 'eh.pharm@gmail.com');
+define('SMTP_NAME', 'James Tang');
+define('SMTP_TO', 'fwsous@gmail.com');

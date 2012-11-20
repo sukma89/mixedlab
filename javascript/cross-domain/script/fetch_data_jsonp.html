@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fetch data on other domain</title>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="jquery.js"></script>
+    </head>
+    <body>
+        <div id="data">Loading...</div>
+
+        <script type="text/javascript">
+            function renderData(data) {
+                    $('#data').html(data.name + ' / ' + data.email);
+            }
+        </script>
+        <script type="text/javascript" src="http://www.dev:9900/api_script.php"></script>
+    </body>
+</html>

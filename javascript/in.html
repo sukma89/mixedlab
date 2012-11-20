@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript In Operator</title>
+
+<head>
+
+<body>
+
+<h1>JavaScript In Operator</h1>
+
+<script type="text/javascript">
+var arr = [1, 2, 3, 4, 5];
+var obj = {
+			"4": true, 
+			"6":true, 
+			"9":true, 
+			"11":true
+		};
+
+if ( 2 in arr) {
+	alert('2 in arr');
+} else {
+	alert('2 NOT in arr');
+}
+
+if ( 4 in obj) {
+	alert('4 in obj');
+} else {
+	alert('4 NOT in obj');
+}
+
+if ( 21 in arr) {
+	alert('21 in arr');
+} else {
+	alert('21 NOT in arr');
+}
+
+if ( 2 in obj) {
+	alert('2 in obj');
+} else {
+	alert('2 NOT in obj');
+}
+</script>
+
+</body>
+</html>

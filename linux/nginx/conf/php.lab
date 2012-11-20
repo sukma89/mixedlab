@@ -1,0 +1,60 @@
+
+server {
+	listen   80; ## listen for ipv4; this line is default and implied
+
+	root /home/james/mixedlab/linux/php;
+	index index.php;
+
+	# Make site accessible from http://localhost/
+	server_name php.lab;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to index.html
+		if (!-e $request_filename) {
+			rewrite ^/(.*)$ /index.php/$1 last;
+		}
+		try_files $uri $uri/ /index.html;
+	}
+
+	location /doc {
+		autoindex on;
+		allow 127.0.0.1;
+		deny all;
+	}
+
+
+	#error_page 404 /404.html;
+
+	# redirect server error pages to the static page /50x.html
+	#
+	#error_page 500 502 503 504 /50x.html;
+	#location = /50x.html {
+	#	root /usr/share/nginx/www;
+	#}
+
+	# proxy the PHP scripts to Apache listening on 127.0.0.1:80
+	#
+	#location ~ \.php$ {
+	#	proxy_pass http://127.0.0.1;
+	#}
+
+	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+	#
+	location ~ \.php($|/) {
+		fastcgi_pass 127.0.0.1:9000;
+		fastcgi_split_path_info ^(.+\.php)(.*)$;
+		fastcgi_param PATH_INFO $fastcgi_path_info;
+		fastcgi_read_timeout 1800;
+		fastcgi_send_timeout 180;
+		include fastcgi_params;
+	}
+
+	# deny access to .htaccess files, if Apache's document root
+	# concurs with nginx's one
+	#
+	#location ~ /\.ht {
+	#	deny all;
+	#}
+}
+

@@ -1,0 +1,48 @@
+/usr/local/mongodb-2.0.1/bin/mongod --port 27017 --maxConns 50 --logpath /usr/local/mongodb-2.0.1/var/logs/mongod.log --pidfilepath /usr/local/mongodb-2.0.1/var/run/mongod.pid --dbpath /usr/local/mongodb-2.0.1/data/db --directoryperdb
+
+# 
+# for master-slave
+# 
+/usr/local/mongodb-2.0.1/bin/mongod --port 27017 --dbpath /usr/local/mongodb-2.0.1/data/db --directoryperdb --master
+/usr/local/mongodb-2.0.1/bin/mongod --port 27018 --dbpath /usr/local/mongodb-2.0.1/data/db_slave --directoryperdb --slave --source localhost:27017
+
+# 
+# for replSet
+# 
+/usr/local/mongodb-2.0.1/bin/mongod --port 27017 --dbpath /usr/local/mongodb-2.0.1/data/node1 --replSet cluster/localhost:10001
+/usr/local/mongodb-2.0.1/bin/mongod --port 10001 --dbpath /usr/local/mongodb-2.0.1/data/node2 --replSet cluster/localhost:27017
+
+/usr/local/mongodb-2.0.1/bin/mongo localhost:27017/admin
+
+db.runCommand({'replSetInitiate':{
+ "_id" : "cluster",
+ "members":[
+ {
+ 	"_id":1,
+	 "host":"localhost:27017"
+ },
+ {
+	 "_id":2,
+	 "host":"localhost:10001"
+ }]}
+})
+
+
+# 
+# for Sharding
+# 
+/usr/local/mongodb-2.0.1/bin/mongod --dbpath /usr/local/mongodb-2.0.1/data/config --port 20000
+/usr/local/mongodb-2.0.1/bin/mongos --port 30000 --configdb localhost:20000
+/usr/local/mongodb-2.0.1/bin/mongod --dbpath /usr/local/mongodb-2.0.1/data/shard1 --port 10002
+/usr/local/mongodb-2.0.1/bin/mongod --dbpath /usr/local/mongodb-2.0.1/data/shard1 --port 10003
+
+/usr/local/mongodb-2.0.1/bin/mongo localhost:30000/admin
+
+# 
+# {"allowLocal": true} for localhost only
+# 
+db.runCommand({"addshard": "localhost:10002", "allowLocal": true})
+db.runCommand({"addshard": "localhost:10003", "allowLocal": true})
+db.runCommand({"enablesharding": "blog"})
+db.runCommand({"shardcollection": "blog.posts", "key": {"title" : 1}})
+

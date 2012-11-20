@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/usr/local/phpb2/sbin/php-fpm
+

@@ -1,0 +1,82 @@
+#!/bin/bash
+# Author: James Tang http://fwso.cn 
+# chkconfig: 345 85 15
+# description: PHP-FPM, alternative to php-fastcgi.
+# processname: php-fpm 
+# pidfile: /usr/local/var/run/php-fpm.pid
+# config: /usr/local/etc/php-fpm.conf
+# Reproduced with express authorization from its contributors
+set -e
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+DESC="php-fpm daemon"
+NAME=php-fpm
+DAEMON=/usr/local/sbin/$NAME
+SCRIPTNAME=/etc/init.d/$NAME
+PIDFILE=/usr/local/var/run/php-fpm.pid
+CATPID=false
+
+if [ -e "$PIDFILE" ]; then
+CATPID=`cat $PIDFILE` 
+fi
+
+# If the daemon file is not found, terminate the script.
+test -x $DAEMON || exit 0
+
+d_start() {
+	if [ $CATPID = false ]; then
+	$DAEMON 
+	else 
+	echo -n " alreaddy started"
+	fi
+}
+
+d_stop() {
+	if [ $CATPID = false ]; then
+	echo -n " does not started"	
+	else
+	kill -s SIGQUIT $CATPID 
+	fi
+}
+
+d_reload () {
+	kill -s SIGUSR2 $CATPID || echo -n " could not reload"
+}
+
+case "$1" in 
+	start)
+		echo -n "Starting $DESC: $NAME"
+		d_start
+		echo "."
+	;;
+	stop)
+		echo -n "Stopping $DESC: $NAME"
+		d_stop
+		echo "."
+	;;
+	reload)
+		echo -n "Reloading $DESC configuration ... "
+		d_reload
+		echo "reloaded."
+	;;
+	restart)
+		echo -n "Restarting $DESC: $NAME"
+		d_stop
+		sleep 2
+		d_start
+		echo "."
+	;;
+	status)
+		if [ $CATPID = false ]; then
+			echo "$DESC is NOT running."
+		else 
+			echo "$DESC is running."
+		fi 
+	;;
+	*)
+		echo "Usage: $SCRIPTNAME {start|stop|restart|reload}" >&2
+		exit 3
+	;;
+esac
+
+exit 0
+

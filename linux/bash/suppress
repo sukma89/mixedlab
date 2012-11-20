@@ -1,0 +1,17 @@
+#!/bin/bash
+PHPCMD="/usr/local/php/bin/php -d display_errors=off"
+
+$PHPCMD hello.php
+echo 
+echo '==========='
+echo 
+$PHPCMD hello2.php
+echo 
+echo '==========='
+echo 
+$PHPCMD hello2.php > /dev/null
+echo 
+echo '==========='
+echo 
+$PHPCMD hello2.php > /dev/null 2>&1 #prevent stdout and stderr output, redirecting to /dev/null
+

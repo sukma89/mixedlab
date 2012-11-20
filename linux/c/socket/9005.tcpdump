@@ -1,0 +1,87 @@
+=============================================================================
+============ 192.168.1.102 connect to 192.168.1.108 on port 9005 ============
+=============================================================================
+
+15:07:48.675455 IP (tos 0x0, ttl 64, id 55243, offset 0, flags [DF], proto TCP (6), length 60)
+    192.168.1.102.36981 > 192.168.1.108.9005: Flags [S], cksum 0x23da (correct), seq 2579719865, win 14600, options [mss 1460,sackOK,TS val 23703922 ecr 0,nop,wscale 7], length 0
+	0x0000:  4500 003c d7cb 4000 4006 decd c0a8 0166
+	0x0010:  c0a8 016c 9075 232d 99c3 66b9 0000 0000
+	0x0020:  a002 3908 23da 0000 0204 05b4 0402 080a
+	0x0030:  0169 b172 0000 0000 0103 0307
+
+15:07:48.675553 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    192.168.1.108.9005 > 192.168.1.102.36981: Flags [S.], cksum 0x8a2b (correct), seq 1820702466, ack 2579719866, win 14480, options [mss 1460,sackOK,TS val 23622949 ecr 23703922,nop,wscale 7], length 0
+	0x0000:  4500 003c 0000 4000 4006 b699 c0a8 016c
+	0x0010:  c0a8 0166 232d 9075 6c85 b702 99c3 66ba
+	0x0020:  a012 3890 8a2b 0000 0204 05b4 0402 080a
+	0x0030:  0168 7525 0169 b172 0103 0307
+
+15:07:48.676196 IP (tos 0x0, ttl 64, id 55244, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.1.102.36981 > 192.168.1.108.9005: Flags [.], cksum 0xf114 (correct), seq 2579719866, ack 1820702467, win 115, options [nop,nop,TS val 23703922 ecr 23622949], length 0
+	0x0000:  4500 0034 d7cc 4000 4006 ded4 c0a8 0166
+	0x0010:  c0a8 016c 9075 232d 99c3 66ba 6c85 b703
+	0x0020:  8010 0073 f114 0000 0101 080a 0169 b172
+	0x0030:  0168 7525
+
+=============================================================================
+============ 192.168.1.102 send data(helloyang) to 192.168.1.108 ============
+============ 192.168.1.108 send "I got your message" back to 102 ============
+=============================================================================
+
+tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 65535 bytes
+15:12:51.138963 IP (tos 0x0, ttl 64, id 55245, offset 0, flags [DF], proto TCP (6), length 62)
+    192.168.1.102.36981 > 192.168.1.108.9005: Flags [P.], cksum 0x46ba (correct), seq 2579719866:2579719876, ack 1820702467, win 115, options [nop,nop,TS val 24006386 ecr 23622949], length 10
+	0x0000:  4500 003e d7cd 4000 4006 dec9 c0a8 0166
+	0x0010:  c0a8 016c 9075 232d 99c3 66ba 6c85 b703
+	0x0020:  8018 0073 46ba 0000 0101 080a 016e 4ef2
+	0x0030:  0168 7525 6865 6c6c 6f79 616e 670a
+
+15:12:51.139215 IP (tos 0x0, ttl 64, id 49701, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.1.108.9005 > 192.168.1.102.36981: Flags [.], cksum 0xb602 (correct), seq 1820702467, ack 2579719876, win 114, options [nop,nop,TS val 23925413 ecr 24006386], length 0
+	0x0000:  4500 0034 c225 4000 4006 f47b c0a8 016c
+	0x0010:  c0a8 0166 232d 9075 6c85 b703 99c3 66c4
+	0x0020:  8010 0072 b602 0000 0101 080a 016d 12a5
+	0x0030:  016e 4ef2
+15:12:51.139390 IP (tos 0x0, ttl 64, id 49702, offset 0, flags [DF], proto TCP (6), length 70)
+    192.168.1.108.9005 > 192.168.1.102.36981: Flags [P.], cksum 0x845b (incorrect -> 0x41af), seq 1820702467:1820702485, ack 2579719876, win 114, options [nop,nop,TS val 23925413 ecr 24006386], length 18
+	0x0000:  4500 0046 c226 4000 4006 f468 c0a8 016c
+	0x0010:  c0a8 0166 232d 9075 6c85 b703 99c3 66c4
+	0x0020:  8018 0072 845b 0000 0101 080a 016d 12a5
+	0x0030:  016e 4ef2 4920 676f 7420 796f 7572 206d
+	0x0040:  6573 7361 6765
+15:12:51.139520 IP (tos 0x0, ttl 64, id 49703, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.1.108.9005 > 192.168.1.102.36981: Flags [F.], cksum 0xb5ef (correct), seq 1820702485, ack 2579719876, win 114, options [nop,nop,TS val 23925413 ecr 24006386], length 0
+	0x0000:  4500 0034 c227 4000 4006 f479 c0a8 016c
+	0x0010:  c0a8 0166 232d 9075 6c85 b715 99c3 66c4
+	0x0020:  8011 0072 b5ef 0000 0101 080a 016d 12a5
+	0x0030:  016e 4ef2
+
+15:12:51.139739 IP (tos 0x0, ttl 64, id 55246, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.1.102.36981 > 192.168.1.108.9005: Flags [.], cksum 0xb5ee (correct), seq 2579719876, ack 1820702485, win 115, options [nop,nop,TS val 24006387 ecr 23925413], length 0
+	0x0000:  4500 0034 d7ce 4000 4006 ded2 c0a8 0166
+	0x0010:  c0a8 016c 9075 232d 99c3 66c4 6c85 b715
+	0x0020:  8010 0073 b5ee 0000 0101 080a 016e 4ef3
+	0x0030:  016d 12a5
+15:12:51.139758 IP (tos 0x0, ttl 64, id 55247, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.1.102.36981 > 192.168.1.108.9005: Flags [F.], cksum 0xb5ed (correct), seq 2579719876, ack 1820702485, win 115, options [nop,nop,TS val 24006387 ecr 23925413], length 0
+	0x0000:  4500 0034 d7cf 4000 4006 ded1 c0a8 0166
+	0x0010:  c0a8 016c 9075 232d 99c3 66c4 6c85 b715
+	0x0020:  8011 0073 b5ed 0000 0101 080a 016e 4ef3
+	0x0030:  016d 12a5
+
+
+15:12:51.139767 IP (tos 0x0, ttl 64, id 49704, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.1.108.9005 > 192.168.1.102.36981: Flags [.], cksum 0xb5ed (correct), seq 1820702486, ack 2579719877, win 114, options [nop,nop,TS val 23925413 ecr 24006387], length 0
+	0x0000:  4500 0034 c228 4000 4006 f478 c0a8 016c
+	0x0010:  c0a8 0166 232d 9075 6c85 b716 99c3 66c5
+	0x0020:  8010 0072 b5ed 0000 0101 080a 016d 12a5
+	0x0030:  016e 4ef3
+15:12:51.139820 IP (tos 0x0, ttl 64, id 55248, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.1.102.36981 > 192.168.1.108.9005: Flags [.], cksum 0xb5ec (correct), seq 2579719877, ack 1820702486, win 115, options [nop,nop,TS val 24006387 ecr 23925413], length 0
+	0x0000:  4500 0034 d7d0 4000 4006 ded0 c0a8 0166
+	0x0010:  c0a8 016c 9075 232d 99c3 66c5 6c85 b716
+	0x0020:  8010 0073 b5ec 0000 0101 080a 016e 4ef3
+	0x0030:  016d 12a5
+^C
+8 packets captured
+8 packets received by filter

@@ -1,0 +1,26 @@
+set number
+filetype plugin indent on
+syntax on
+set tabstop=4
+set shiftwidth=4
+set laststatus=2
+set modeline
+set foldmethod=marker
+set hlsearch
+set statusline=%<%-10.30f\ %(%l[%L],%c%V%)\ %{&ff}\ %p%%\ %-8.10Y\ 
+map <F2> :NERDTreeToggle<CR>
+
+let tlist_php_settings = 'php;c:class;f:function'
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Close_On_Select = 1
+let Tlist_Sort_Type = "name"
+
+nmap <F2> :w<CR>
+imap <F2> <ESC>:w<CR>a
+map <F3> :TlistToggle<CR>
+map <F4> :set syntax=php<CR>
+
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
