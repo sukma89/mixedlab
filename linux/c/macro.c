@@ -6,6 +6,8 @@
 
 #define STR(x) #x
 
+#define _DD_TEST 1
+
 int zif_strlen(char *str) {
 	return strlen(str);
 }
@@ -16,6 +18,7 @@ int main(void)
 	int len = ZEND_FN(strlen)(str);
 	printf("Length of \"%s\" = %d\n", str, len);	
 	printf("%s\n", STR(hello));
+    printf("_DD_TEST = %d\n", _DD_TEST);
 	return 0;
 }
 

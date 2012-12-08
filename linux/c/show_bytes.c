@@ -1,11 +1,14 @@
 #include <stdio.h>
-
-typedef unsigned char *byte_p;
+#include "show_bytes.h"
 
 void show_bytes(byte_p start, long int len) {
 	int i;
 	printf("0x");
+#if defined(LEND)
+	for (i = len - 1; i >= 0; i--) {
+#else
 	for (i = 0; i < len; i++) {
+#endif
 		printf("%.2x", start[i]);
 	}	
 	printf("\n");
@@ -23,18 +26,3 @@ void show_pointer(void *x) {
 	show_bytes((byte_p) &x, sizeof(void *));
 }
 
-int main(void) {
-	int a = 256;
-	float b = 0.1;
-	char *c = "abc";
-	short int v = -12345;
-	unsigned short uv = (unsigned short) v;
-	show_int(a);//little endian: 0x00010000,big endian: 0x00000100
-	a = -1;
-	show_int(a);
-	show_float(b);
-	show_pointer(c);
-	show_bytes((byte_p) &v, sizeof(short int));
-	show_bytes((byte_p) &uv, sizeof(unsigned short));
-	return 0;
-}
