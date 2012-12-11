@@ -1,5 +1,6 @@
 # Object files
 *.o
+*.gch
 
 # Libraries
 *.lib
@@ -20,3 +21,4 @@
 # Temporary files
 *.data
 *.erl~
+*.tmp
