@@ -5,13 +5,12 @@
 /**
  * convert 32bit int to the corresponding float bit pattern
  */
-unsigned convert_int_to_float(int i);
+float convert_int_to_float(int i);
 
 int main(int argc, char *argv[])
 {
     int i;
-    float vf;
-    unsigned f;
+    float f, vf;
 
     if (argc < 2) {
         printf("Usage: COMMAND INTEGER\n");
@@ -21,11 +20,16 @@ int main(int argc, char *argv[])
     i = atoi(argv[1]);
 
     if (i != 0) {
+        printf("i  = %10d, ", i);
+        show_int(i);
+
         vf = atof(argv[1]);
         f = convert_int_to_float(i);
-        printf("f  = ");
+
+        printf("f  = %10.6f, ", f);
         show_bytes((byte_p) &f, sizeof(f));
-        printf("vf = ");
+
+        printf("vf = %10.6f, ", vf);
         show_float(vf);
     } else {
         printf("i == 0\n");
@@ -34,9 +38,10 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-unsigned convert_int_to_float(int i)
+float convert_int_to_float(int i)
 {
     unsigned f = 0x00000000;
+    float *ff;
     int e = 0, t, ms = 0, ms_mask = 0x40000000;
 
     if (i < 0) {
@@ -68,5 +73,7 @@ unsigned convert_int_to_float(int i)
     f |=  e;
     f |=  i;
 
-    return f;
+    ff = (float *) &f;
+
+    return *ff;
 }
