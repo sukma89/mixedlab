@@ -1,11 +1,18 @@
-#include <stdio.h>
+#include "algorithm.h"
 
 void _print_r(int *arr, int len) {
-	int i;
-	for (i = 0; i < len; i++) {
-		printf("%-5d ", arr[i]);
-	}
-	printf("\n");
+    print_array(arr, len);
+}
+
+void print_array(const int arr[], int arr_len)
+{
+    int i;
+
+    for (i = 0; i < arr_len; i++) {
+        printf("%d\t", arr[i]);
+    }
+    
+    printf("\n");
 }
 
 void _swap(int *left, int *right) {
