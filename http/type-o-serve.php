@@ -40,26 +40,36 @@ while (1) {
     } else {
         echo '   <<<Connection count: ' . (++$i) . ">>>\n";
         $new_line = true;
+        $first = true;
+        $valid = true;
         while (($ch = socket_read($client, 1)) !== FALSE) {
+            if ($first && $ch == '') {
+                $valid = false;
+                break;
+            }
+            if ($first) $first = false;
             if ($new_line && $ch == "\r") break;
             if ($ch != "\r") {
                 echo $ch;
                 $new_line = !$new_line && $ch == "\n";
             }
         }
-        echo "\n   <<<Type response followed by '.'>>>\n";
 
-        $in = fopen('php://stdin', 'r');
-        
-        while ($line = fgets($in)) {
-            $line = str_replace(array("\r", "\n"), array('', ''), $line);
-            if ($line == '.') break;
-            socket_write($client, $line . "\r\n");
+        if ($valid) {
+            echo "\n   <<<Type response followed by '.'>>>\n";
+
+            $in = fopen('php://stdin', 'r');
+
+            while ($line = fgets($in)) {
+                $line = str_replace(array("\r", "\n"), array('', ''), $line);
+                if ($line == '.') break;
+                socket_write($client, $line . "\r\n");
+            }
+
+            echo "   <<<Waiting>>>\n\n";
+
+            fclose($in);
         }
-
-        echo "   <<<Waiting>>>\n\n";
-
-        fclose($in);
     }
     socket_shutdown($client, 2);
 }
