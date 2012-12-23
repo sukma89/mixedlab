@@ -38,7 +38,8 @@ while (1) {
         echo 'Failed to accept connection: ' . 
             socket_strerror(socket_last_error());
     } else {
-        echo '   <<<Connection count: ' . (++$i) . ">>>\n";
+        socket_getpeername($client, $cip, $cport);
+        echo '   <<<Connection count: ' . (++$i) . ", from ip: $cip, port: $cport>>>\n";
         $new_line = true;
         $first = true;
         $valid = true;
