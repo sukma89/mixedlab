@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * This program can only be used as a demonstration of
+ * PHP DOM extension.
+ *
+ * @author fwsous@gmail.com
+ */
 header('Content-Type: application/json; charset=utf-8');
 define('REQUEST_TIME', time());
 
@@ -111,34 +116,7 @@ class RemoteQueryWord
                     $word = $childs->item(0)->nodeValue;
                     $def['word'] = $word;
 
-                    $prons = $this->innerHTML($h2);
-
-                    $reg = '#^[^\(]*\(([^\)]+)\).*$#s';
-                    if (preg_match($reg, $prons)) {
-                        $prons = preg_replace(
-                            "#<img[^>]*'(/sounds/[^>']+\.mp3)'[^>]*>#is", 
-                            '[[\1]]', $prons); 
-                        $prons = preg_replace('#\s+#', ' ', strip_tags($prons));
-                        $prons = preg_replace($reg, '\1', $prons);
-                        $_prons = explode(';', $prons);
-
-                        $prons = array();
-                        
-                        foreach ($_prons as $pron) {
-                            $pron = trim($pron);
-                            $_pron = array();
-                            if (preg_match('#\[\[([^\]]+)\]\]#', $pron, $mp3)) {
-                                $_pron['mp3'] = $mp3[1];
-                                $_pron['syllable'] = substr($pron, 0, strpos($pron, '[['));
-                            } else {
-                                $_pron['mp3'] = false;
-                                $_pron['syllable'] = $pron;
-                            } 
-                            $prons[] = $_pron;
-                        }
-                    } else {
-                        $prons = array();
-                    }
+                    $prons = $this->parseProns($this->innerHTML($h2));
 
                     $def['prons'] = $prons;
                 }
@@ -148,24 +126,37 @@ class RemoteQueryWord
 
                 if ($defItemNodes->length > 0) {
                     foreach ($defItemNodes as $node) {
+                       $_defItems = array();
                        $grammerType = $xpath->query('h4/span', $node); 
                        if ($grammerType && $grammerType->length > 0) {
                            $grammerType = $grammerType->item(0)->nodeValue;
-                           $defItems['type'] = $grammerType;
+                           $_defItems['type'] = $grammerType;
                            $lis = $xpath->query('ol/li', $node);
                            foreach ($lis as $li) {
-                               $defItems['items'][] = $this->innerHTML($li);
+                               $_defItems['items'][] = $this->innerHTML($li);
                            }
+
+                           $typeProns = $xpath->query('span[@class="orth"]', $node);
+                           if ($typeProns && $typeProns->length > 0) {
+                               $html = $this->innerHTML($typeProns->item(0));
+                               $prons = $this->parseProns($html);
+                               $_defItems['prons'] = $prons;
+                           }
+                       }
+
+                       if (count($_defItems) > 0) {
+                           $defItems[] = $_defItems;
                        }
                     }
                 } else {
                     $defItemNodes = $xpath->query('div/div[@class="definitions hom-subsec"]/ol/li', $defNode);
 
                     if ($defItemNodes && $defItemNodes->length > 0) {
-                        $defItems['type'] = 'null';
+                        $_defItems['type'] = 'null';
                         foreach ($defItemNodes as $node) {
-                            $defItems['items'][] = $this->innerHTML($node);
+                            $_defItems['items'][] = $this->innerHTML($node);
                         }
+                        $defItems[] = $_defItems;
                     }
                 }
                 $def['definitions'] = $defItems;
@@ -189,9 +180,38 @@ class RemoteQueryWord
         $dom->loadHTML($meta);
         $dom->appendChild($dom->importNode($node, true));
         $html = preg_replace(
-            '#^.*<' . $node->nodeName . '[^>]*>(.*)</' . $node->nodeName . '>.*$#s', 
+            '#^.*</html><' . $node->nodeName . '[^>]*>(.*)</' . $node->nodeName . '>.*$#s', 
             '\1', $dom->saveHTML());
         return $html;
+    }
+
+    private function parseProns($prons)
+    {
+        $reg = '#^[^\(]*\(([^\)]+)\).*$#s';
+        $pronunciations = array();
+        if (preg_match($reg, $prons)) {
+            $prons = preg_replace(
+                "#<img[^>]*'(/sounds/[^>']+\.mp3)'[^>]*>#is", 
+                '[[\1]]', $prons); 
+            $prons = preg_replace('#\s+#', ' ', strip_tags($prons));
+            $prons = preg_replace($reg, '\1', $prons);
+            $_prons = explode(';', $prons);
+
+            foreach ($_prons as $pron) {
+                $pron = trim($pron);
+                $_pron = array();
+                if (preg_match('#\[\[([^\]]+)\]\]#', $pron, $mp3)) {
+                    $_pron['mp3'] = $mp3[1];
+                    $_pron['syllable'] = substr($pron, 0, strpos($pron, '[['));
+                } else {
+                    $_pron['mp3'] = false;
+                    $_pron['syllable'] = $pron;
+                } 
+                $pronunciations[] = $_pron;
+            }
+        }
+
+        return $pronunciations;
     }
 }
 
