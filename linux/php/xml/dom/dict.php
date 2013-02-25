@@ -9,24 +9,7 @@ define('REQUEST_TIME', time());
 
 class RemoteQueryWord 
 {
-    public static $realBaseURL = 'http://www.collinsdictionary.com/dictionary/english/';
-    public static $baseURL = 'http://54.247.173.216/dictionary/english/';
-    public static $singletonTags = array(
-        'img',
-        'br',
-        'hr',
-        'input',
-        'meta',
-        'link',
-        'col',
-        'param',
-        'base',
-        'basefont',
-        'frame',
-        'area',
-        'isindex'
-    );
-
+    public static $baseURL = 'http://www.collinsdictionary.com/dictionary/english/';
 
     private $word;
     private $queryWord;
@@ -35,11 +18,7 @@ class RemoteQueryWord
     {
         $this->word = $word;
         $this->queryWord = strtolower(preg_replace('/(\'|\s+)/', '-', $word->getParsedWord()));
-
-        $this->uni1Code = '21D2';
-        $this->uni1CodeR = '\U21D2';
-        $this->uni1 = html_entity_decode("&#x$this->uni1Code;", ENT_COMPAT, 'utf-8');
-        $this->word->setRemoteURL(self::$realBaseURL . $this->queryWord);
+        $this->word->setRemoteURL(self::$baseURL . $this->queryWord);
     }
 
     public function query()
@@ -62,7 +41,6 @@ class RemoteQueryWord
             curl_setopt($curl, CURLOPT_REFERER, 'http://www.collinsdictionary.com/');
             curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11');
             curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Host: www.collinsdictionary.com',
                 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 'Accept-Language: en-US,en;q=0.8,zh-CN;q=0.6',
                 'Accept-Charset: GBK,utf-8;q=0.7,*;q=0.3'
@@ -74,7 +52,6 @@ class RemoteQueryWord
 
             if ($curl_errno > 0) {
                 $msg = 'Failed to fetch collins data with CURL error: ' . curl_error($curl);
-                //error_log($msg, $curl_errno);
                 DictLog::error($msg . ', #' . $curl_errno);
                 return false;
             }
