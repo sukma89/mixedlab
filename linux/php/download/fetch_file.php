@@ -8,12 +8,12 @@ if (!file_exists($file)) {
 }
 
 $mimeType = mime_content_type($file);
-$md5sum = md5_file($file);
+$md5sum = md5_file($file, true);
 
 header('Content-Type: ' . $mimeType . '; charset=binary');
 header('Content-Disposition: attachment; filename="' . $file . '"');
-header('X-MD5-Sum: ' . $md5sum);
-header('Content-Length: ' . filesize($file));
+header('Content-MD5: ' . base64_encode($md5sum));
+//header('Content-Length: ' . filesize($file));
 
 $fp = fopen($file, 'r');
 

@@ -10,7 +10,10 @@
 set_time_limit(600);
 ignore_user_abort(true);
 
-$url = 'http://test.example.com/fetch_file.php?file=testfile.iso';
+//$url = 'http://test.example.com/fetch_file.php?file=testfile.iso';
+//$saveToFile = 'tmp.iso';
+$url = 'http://test.example.com/fetch_file.php?file=tmp.gz';
+$saveToFile = 'tmp.gz';
 
 if (preg_match_all('#http://([^/]+)(/.+)#i', $url, $matches)) {
     $host = $matches[1][0];
@@ -20,7 +23,6 @@ if (preg_match_all('#http://([^/]+)(/.+)#i', $url, $matches)) {
 }
 
 $fp = fsockopen($host, 80, $errno, $error, 30);
-$saveToFile = 'tmp.iso';
 $readBlockSize = 512;
 
 if ($fp) {
@@ -51,8 +53,8 @@ if ($fp) {
                     $colon_pos = strpos($header, ':');
                     $header_name = strtolower(trim(substr($header, 0, $colon_pos)));
                     $header_value = trim(substr($header, $colon_pos+1)); 
-                    if ($header_name == 'x-md5-sum') {
-                        $md5sum = strtolower($header_value);
+                    if ($header_name == 'content-md5') {
+                        $md5sum = bin2hex(base64_decode($header_value));
                     } else if ($header_name == 'content-length') {
                         $content_length = (int) $header_value;
                     }
@@ -90,7 +92,7 @@ if ($fp) {
 
         fclose($wfp);
         if ($md5sum && strlen($md5sum) > 0) {
-            $md5sum_check = md5_file($saveToFile);
+            $md5sum_check = bin2hex(md5_file($saveToFile, true));
             if ($md5sum_check != $md5sum) {
                 echo 'MD5 checksum does not match: ' . $md5sum_check . "\n";
             } else {
