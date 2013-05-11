@@ -18,7 +18,8 @@ while (true) {
     $node = $dom->getElementById($word . '_' . $i);
     if ($node) {
         //print_r($node);
-        echo '> ' . $i . "\n";
+        echo htmlspecialchars(innerHTML($node));
+        echo "<hr />\n";
     } else {
         break;
     }
@@ -29,3 +30,11 @@ while (true) {
 //var_dump($errors);
 libxml_clear_errors();
 
+function innerHTML($el) {
+    $doc = new DOMDocument();
+    $doc->appendChild($doc->importNode($el, TRUE));
+    $html = trim($doc->saveHTML());
+    $tag = $el->nodeName;
+    return $html;
+    //return preg_replace('@^<' . $tag . '[^>]*>|</' . $tag . '>$@', '', $html);
+}

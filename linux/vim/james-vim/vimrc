@@ -1,0 +1,14 @@
+set number
+filetype plugin indent on
+syntax on
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set laststatus=2
+set modeline
+set foldmethod=marker
+set hlsearch
+set statusline=%<%-10.30f\ %(%l[%L],%c%V%)\ %{&ff}\ %p%%\ %-8.10Y\ 
+
+let NERDTreeQuitOnOpen = 1
+map <F2> :NERDTreeToggle<CR>
